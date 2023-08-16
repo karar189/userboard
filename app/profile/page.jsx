@@ -26,14 +26,13 @@ const MyProfile = () => {
     router.push(`/update-prompt?id=${post._id}`);
   };
   const handleDelete = async (post) => {
-    // const hasConfirmed = confirm(
-    //   "Are you sure you want to delete this prompt?"
-    // );
+    const hasConfirmed = confirm(
+      "Are you sure you want to delete this prompt?"
+    );
   };
   return (
     <Profile
       name="My"
-      desc="Welcome to your personalized profile page. Share your exceptional prompts and inspire others with the power of your imagination"
       data={myPosts}
       handleEdit={handleEdit}
       handleDelete={handleDelete}

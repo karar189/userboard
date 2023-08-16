@@ -10,8 +10,6 @@ const PromptCard = ({ post, handleEdit, handleDelete, handleTagClick }) => {
   const pathName = usePathname();
   const router = useRouter();
 
-  const [copied, setCopied] = useState("");
-
   const handleProfileClick = () => {
     console.log(post);
 
@@ -46,47 +44,33 @@ const PromptCard = ({ post, handleEdit, handleDelete, handleTagClick }) => {
               {" "}
               Phone: {post.prompt}
             </p>
+
+            <p
+              className="font-inter text-sm blue_gradient cursor-pointer -mt-4"
+              onClick={() => handleTagClick && handleTagClick(post.tag)}
+            >
+              Location: {post.tag}
+            </p>
           </div>
         </div>
-
-        {/* <div className="copy_btn" onClick={handleCopy}>
-          <Image
-            src={
-              copied === post.prompt
-                ? "/assets/icons/tick.svg"
-                : "/assets/icons/copy.svg"
-            }
-            alt={copied === post.prompt ? "tick_icon" : "copy_icon"}
-            width={12}
-            height={12}
-          />
-        </div> */}
       </div>
 
-      {/* <p
-        className="font-inter text-sm blue_gradient cursor-pointer"
-        onClick={() => handleTagClick && handleTagClick(post.tag)}
-      >
-        #{post.tag}
-      </p> */}
-
-      <div className="mt-5 flex-center gap-4 border-t border-gray-100 pt-3">
-        <p
-          className="font-inter text-sm green_gradient cursor-pointer"
-          onClick={handleEdit}
-        >
-          Edit
-        </p>
-        <p
-          className="font-inter text-sm orange_gradient cursor-pointer"
-          onClick={handleDelete}
-        >
-          Delete
-        </p>
-      </div>
-      {/* {session?.user.id === post.creator._id && pathName === "/profile" && (
-      
-      )} */}
+      {session?.user.id === post.creator._id && pathName === "/profile" && (
+        <div className="mt-5 flex-center gap-4 border-t border-gray-100 pt-3">
+          <p
+            className="font-inter text-sm green_gradient cursor-pointer"
+            onClick={handleEdit}
+          >
+            Edit
+          </p>
+          <p
+            className="font-inter text-sm orange_gradient cursor-pointer"
+            onClick={handleDelete}
+          >
+            Delete
+          </p>
+        </div>
+      )}
     </div>
   );
 };
